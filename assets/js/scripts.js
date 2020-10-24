@@ -39,11 +39,13 @@ const game = function() {
                 playerHand.src = `../assets/img/hand.png`;
                 computerHand.src = `../assets/img/hand.png`;
                 // Here is where we call compareHands
-                compareHands(this.textContent, computerChoice);
+                setTimeout(() => {
+                    compareHands(this.textContent, computerChoice);
 
-                // Update images 
-                playerHand.src = `../assets/img/${this.textContent}.png`;
-                computerHand.src = `../assets/img/${computerChoice}.png`;
+                    // Update images 
+                    playerHand.src = `../assets/img/${this.textContent}.png`;
+                    computerHand.src = `../assets/img/${computerChoice}.png`;
+                }, 2000);
             });
         });
     };
