@@ -15,8 +15,33 @@ const game = function() {
         });
     }
 
+    // Play match
+    const playMatch = function() {
+        const options = document.querySelectorAll(".options button");
+        const playerHand = document.querySelector(".player-hand");
+        const computerHand = document.querySelector(".computer-hand");
+
+        // Computer Options - randomly generated
+        /* Generate a random number
+        between 1 and 2 (0 -3) with each number
+        asssociated with an image (rock paper scissors)
+        */
+        const computerOptions = ["rock", "paper", "scissors"];
+
+        // We only want the computer to generate a number once a button has been clicked
+        options.forEach((option)=>{
+            option.addEventListener("click", function() {   // use normal function, rather than arrow function so that we can use this keyword
+                // Computer choice
+                const computerNumber = Math.floor(Math.random() * 3);
+                const computerChoice = computerOptions[computerNumber];
+                console.log(computerChoice);
+            })
+        })
+    }
+
     // call all the inner functions
     startGame();
+    playMatch();
 }
 
 // start the game
