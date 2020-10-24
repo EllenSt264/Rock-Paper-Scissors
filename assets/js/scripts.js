@@ -22,6 +22,7 @@ const game = function() {
         const computerHand = document.querySelector(".computer-hand");
 
         // Computer Options - randomly generated
+
         /* Generate a random number
         between 1 and 2 (0 -3) with each number
         asssociated with an image (rock paper scissors)
@@ -34,9 +35,58 @@ const game = function() {
                 // Computer choice
                 const computerNumber = Math.floor(Math.random() * 3);
                 const computerChoice = computerOptions[computerNumber];
-                console.log(computerChoice);
-            })
-        })
+                
+                playerHand.src = `../assets/img/hand.png`;
+                computerHand.src = `../assets/img/hand.png`;
+                // Here is where we call compareHands
+                compareHands(this.textContent, computerChoice);
+
+                // Update images 
+                playerHand.src = `../assets/img/${this.textContent}.png`;
+                computerHand.src = `../assets/img/${computerChoice}.png`;
+            });
+        });
+    };
+
+    const compareHands = (playerChoice, computerChoice)=> {    
+        // Update text
+        const winner = document.querySelector(".winner");
+        // Checking for a tie
+        if (playerChoice === computerChoice) {
+            winner.textContent = "It's a tie!";
+            return;     // ends the function
+        }
+        // Check for a rock
+        if(playerChoice === "rock") {
+            if (computerChoice === "scissors") {
+                winner.textContent = "You Win!"
+                return;
+            }
+            else {
+                winner.textContent = "Computer Wins!";
+                return;
+            }
+        }
+        if(playerChoice === "paper") {
+            if (computerChoice === "rock") {
+                winner.textContent = "You Win!"
+                return;
+            }
+            else {
+                winner.textContent = "Computer Wins!";
+                return;
+            }
+        }
+        if(playerChoice === "scissors") {
+            if (computerChoice === "paper") {
+                winner.textContent = "You Win!"
+                return;
+            }
+            else {
+                winner.textContent = "Computer Wins!";
+                return;
+            }
+        }
     }
 
     // call all the inner functions
