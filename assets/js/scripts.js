@@ -1,6 +1,6 @@
 const game = function() {
-    let playerScore = 0;
-    let computerScore = 0;
+    let pScore = 0;
+    let cScore = 0;
 
     // Start Game function to fade the intro div 
     const startGame = ()=> {
@@ -48,6 +48,13 @@ const game = function() {
         });
     };
 
+    const updateScore = () => {
+        const playerScore = document.querySelector(".player-score p");
+        const computerScore = document.querySelector(".computer-score p");
+        playerScore.textContent = pScore;
+        computerScore.textContent = cScore;
+    }
+
     const compareHands = (playerChoice, computerChoice)=> {    
         // Update text
         const winner = document.querySelector(".winner");
@@ -60,30 +67,42 @@ const game = function() {
         if(playerChoice === "rock") {
             if (computerChoice === "scissors") {
                 winner.textContent = "You Win!"
+                pScore++;
+                updateScore();
                 return;
             }
             else {
                 winner.textContent = "Computer Wins!";
+                cScore++;
+                updateScore();
                 return;
             }
         }
         if(playerChoice === "paper") {
             if (computerChoice === "rock") {
                 winner.textContent = "You Win!"
+                pScore++;
+                updateScore();
                 return;
             }
             else {
                 winner.textContent = "Computer Wins!";
+                cScore++;
+                updateScore();
                 return;
             }
         }
         if(playerChoice === "scissors") {
             if (computerChoice === "paper") {
                 winner.textContent = "You Win!"
+                pScore++;
+                updateScore();
                 return;
             }
             else {
                 winner.textContent = "Computer Wins!";
+                cScore++;
+                updateScore();
                 return;
             }
         }
